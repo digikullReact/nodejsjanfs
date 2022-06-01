@@ -1,0 +1,72 @@
+function Appstart(){
+
+    const promise=new Promise((res,rej)=>{
+  
+      app.listen(port,()=>{
+  
+      res("Server Started From promise")
+  
+   
+  
+  })
+      
+    })
+  
+  
+    return promise
+  
+    
+  }
+
+  Appstart().then(data=>{
+      console.log(data);
+  })
+
+  // Cone
+
+
+  const fs = require('fs')
+
+fs.readFile("a.txt", 'utf8', (err, data)=>{
+if(err){
+console.log(err)
+}
+
+else{
+
+fs.writeFile("YourFIle.txt", data, (err, data)=>{
+if(err){
+console.log(err)}
+else{
+console.log("Code is successfully wirtten")
+}
+} )
+
+}
+
+
+             }) //This code is applicable for reading the file
+
+
+///This code is applicable for writing in files
+
+function check(number){
+
+    return new Promise((res,rej)=>{
+  
+      if(number%2==0){
+        res("number even")
+      }
+      else{
+        rej("number odd");
+      }
+      
+    })
+    
+  }
+  
+  check(23).then(data=>{
+    console.log(data);
+  }).catch(err=>{
+    console.log(err);
+  })

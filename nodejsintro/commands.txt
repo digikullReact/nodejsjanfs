@@ -1,0 +1,3 @@
+ls   --will list all the files and folders in current folder
+
+cd  -change directory  used to switch in other directory 
