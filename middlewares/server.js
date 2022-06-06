@@ -4,7 +4,7 @@ const app=express();
 
 const approuter=require("./routes/app.route");
 const authrouter=require("./routes/auth.route");
-const {appLevel} =require("./middlewares/app.middleware");
+const {appLevel,changeData} =require("./middlewares/app.middleware");
 
 const port =process.env.PORT || 9091;
 
@@ -12,7 +12,8 @@ const port =process.env.PORT || 9091;
 
 app.use(express.json());
 
-app.use(appLevel)  // using custom app level middleware 
+app.use(appLevel)  // using custom app level middleware ,you can pass multiple middlewares in app.use();
+///app.use(appLevel,changeData)  // using custom app level middleware 
 
 
 // three ways in which you can use middlewares
