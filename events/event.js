@@ -37,8 +37,10 @@ function customCheckIphonePrice(){
        //   console.log(response.data);
 
           //  --checking out price
-          myEmitter.emit("sell");
-         
+
+          if (price<10000){
+           
+          }
       }
     ).catch(err=>{
         console.log(err);

@@ -1,7 +1,10 @@
-const express=require("express");
+import express from "express";  // es6
 const app=express();
+
+/*const express=require("express");
+
 const port=process.env.PORT || 9091
-const fs=require("fs/promises");
+const fs=require("fs/promises");  //common js --
 const os=require("os");
 
 app.use(express.json());
@@ -47,4 +50,8 @@ app.post("/savedata",(req,res)=>{
  })
 
 
- 
+ */
+
+ app.listen(9099,()=>{
+     console.log("server running")
+ })

@@ -4,3 +4,5 @@
 /streaming/node_modules
 /frontendapp/node_modules
 /templatengines/node_modules
+/middlewares/node_modules
+/authapp/node_modules

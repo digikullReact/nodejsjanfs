@@ -1,0 +1,10 @@
+{
+    "name": "something from the file",
+    "age": 299,
+    "url":"https://image.shutterstock.com/image-photo/mountains-under-mist-morning-amazing-260nw-1725825019.jpg",
+     "address":{
+         "city":"Noida",
+         "country":"India",
+          "state":"UP"
+     }
+}
