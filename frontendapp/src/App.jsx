@@ -2,23 +2,29 @@ import { useState,useEffect } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import axios from "axios";
+import {
+
+  Routes,
+  Route,
+} from "react-router-dom";
+import Login from './components/Login';
+import Signup from './components/Signup';
+import Home from './components/Home';
 
 function App() {
 
-  const [count, setCount] = useState("")
-  useEffect(()=>{
-    axios.get("http://localhost:5500",{data:"johnn"}).then(response=>{
-      console.log(response.data);
-      setCount(response.data);
-    })
-
-  },[])
+  
 
 
   return (
     <div className="App">
+       <Routes>
+      <Route path="/login" element={<Login />}/>
+      <Route path="/signup" element={<Signup />}/>
 
-{count}
+      <Route path="/home" element={<Home />}/>
+      
+    </Routes>
 
 
      

@@ -48,7 +48,7 @@ const login=(req,res)=>{
             else{
 
                 res.json({
-                    message:"Login Failed"
+                    message:"Login Failed,Passwords donot match"
                 })
             }
         })
