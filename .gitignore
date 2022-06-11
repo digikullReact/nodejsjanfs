@@ -6,3 +6,4 @@
 /templatengines/node_modules
 /middlewares/node_modules
 /authapp/node_modules
+/frontendapp/deploy/node_modules

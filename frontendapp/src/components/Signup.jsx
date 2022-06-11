@@ -4,13 +4,14 @@ import { Col, Row } from 'antd';
 import { Alert } from 'antd';
 
 import axios from 'axios';
+import config from './config';
 
 const Signup = () => {
   const [success,setSuccess]=useState("");
 
   const onFinish = (values) => {
 
-    axios.post("http://localhost:8080/auth/signup",values).then(result=>{
+    axios.post(`${config.URL}auth/signup`,values).then(result=>{
 
  
     if(result.data.message=="Successfully registered")

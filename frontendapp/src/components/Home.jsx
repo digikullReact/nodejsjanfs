@@ -4,6 +4,7 @@ import { Col, Row } from 'antd';
 import { Button, Modal } from 'antd';
 
 import axios from 'axios';
+import config from './config';
 
 
 
@@ -39,7 +40,7 @@ const Home = () => {
       'token': localStorage.getItem("token")
     }
 
-    axios.put("http://localhost:8080/user/edit",editData,{
+    axios.put(`${config.URL}user/edit`,editData,{
       headers: headers
     }).then(response=>{
       setIsModalVisible(false);  // will hide the model
@@ -82,7 +83,7 @@ const Home = () => {
       'token': localStorage.getItem("token")
     }
 
-    axios.delete("http://localhost:8080/user/delete/"+id,{
+    axios.delete(`${config.URL}user/delete/${id}`,{
       headers: headers
     }).then(response=>{
       setIsModalVisible2(!isModalVisible2);  // will hide the model
@@ -139,7 +140,7 @@ const apiData=(pageNumber,limit,recordsPerPage)=>{
     'token': localStorage.getItem("token")
   }
 
-  axios.get(`http://localhost:8080/user/?pageNumber=${pageNumber}&limit=${limit}&recordsPerPage=${recordsPerPage}`,{
+  axios.get(`${config.URL}user/?pageNumber=${pageNumber}&limit=${limit}&recordsPerPage=${recordsPerPage}`,{
     headers: headers
   }).then(response=>{
 
@@ -164,6 +165,8 @@ const apiData=(pageNumber,limit,recordsPerPage)=>{
 
 const ChangePage=(data)=>{
 
+  debugger;
+
 
   setpageNumber(data.current-1)
 
@@ -183,6 +186,7 @@ const ChangePage=(data)=>{
     <Table columns={columns} dataSource={data}  
     
     onChange={ChangePage}
+    showSorterTooltip={true}	
     
     
     pagination={{ defaultPageSize: 2,  total:totalcount  ,showSizeChanger: true, pageSizeOptions: ['10', '20', '30']} }/>

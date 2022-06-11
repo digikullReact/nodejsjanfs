@@ -9,9 +9,10 @@ const getUserdata=(req,res)=>{
     const limit=req.query.limit;
     const recordsPerPage=req.query.recordsPerPage
 
-    User.find().count().then(count=>{
+    // Promise all ---->
+    User.find().count().then(count=>{  // it gives total records in your collection --->
 
-
+   // OFFSET --in mysql 
     User.find().skip(parseInt(pageNumber)*parseInt(recordsPerPage)).limit(parseInt(limit)).then(response=>{
 
         console.log(response);

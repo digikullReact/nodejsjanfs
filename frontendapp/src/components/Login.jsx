@@ -3,6 +3,7 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import { Col, Row } from 'antd';
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
+import config from './config';
 
 
 const Login = () => {
@@ -11,7 +12,7 @@ const Login = () => {
   const onFinish = (values) => {
 
 
-    axios.post("http://localhost:8080/auth/login",values).then(result=>{
+    axios.post(`${config.URL}auth/login`,values).then(result=>{
 
     console.log(result.data);
 
