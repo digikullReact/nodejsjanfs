@@ -16,6 +16,8 @@ const Home = () => {
   const [limit,setLimit]=useState(2);
   const [recordsPerPage,setrecordsPerPage]=useState(2)
   const [totalcount,setTotalcount]=useState(0);
+  const [searchQuery,setSearchQuery]=useState("");
+  const [sortOrder,setSortOrder]=useState(1);
 
 
 
@@ -102,6 +104,16 @@ const Home = () => {
       dataIndex: 'name',
       key: 'name',
       render: (text) => <a>{text}</a>,
+      sorter: (a, b) => {
+        
+      //  a.name.length - b.name.length
+      
+      setSortOrder(-1*sortOrder);
+      
+      },
+
+    //  sortDirections: [(sortOrder?'ascend':'descend')],
+   
     },
     {
       title: 'Email',
@@ -140,7 +152,7 @@ const apiData=(pageNumber,limit,recordsPerPage)=>{
     'token': localStorage.getItem("token")
   }
 
-  axios.get(`${config.URL}user/?pageNumber=${pageNumber}&limit=${limit}&recordsPerPage=${recordsPerPage}`,{
+  axios.get(`${config.LOCALURL}user/?pageNumber=${pageNumber}&limit=${limit}&recordsPerPage=${recordsPerPage}&name=${searchQuery}&sort=${sortOrder}`,{
     headers: headers
   }).then(response=>{
 
@@ -161,16 +173,21 @@ const apiData=(pageNumber,limit,recordsPerPage)=>{
 
     apiData(pageNumber,limit,recordsPerPage)
    
-},[isModalVisible,isModalVisible2,pageNumber])
+},[isModalVisible,isModalVisible2,pageNumber,searchQuery,sortOrder])
 
 const ChangePage=(data)=>{
 
-  debugger;
+ 
 
 
   setpageNumber(data.current-1)
 
 
+
+}
+
+const handleSearchChange=(event)=>{
+  setSearchQuery(event.target.value);
 
 }
   return(
@@ -180,6 +197,10 @@ const ChangePage=(data)=>{
         <p><Input placeholder="Email"   name='email' value={editData.email} onChange={handleEditChange} /></p>
       
       </Modal>
+      <Col span={4} offset={6}>
+      <Input placeholder="Search Query"    onChange={handleSearchChange} />
+
+        </Col>
     
     <Col span={12} offset={6}>
       <h1>User Details</h1>

@@ -8,14 +8,17 @@ const getUserdata=(req,res)=>{
     const pageNumber=req.query.pageNumber;
     const limit=req.query.limit;
     const recordsPerPage=req.query.recordsPerPage
+    const name=req.query.name;
+    const sortOrder=req.query.sort;
+    //console.log(name);
 
     // Promise all ---->
-    User.find().count().then(count=>{  // it gives total records in your collection --->
+    User.find({name:{$regex:name}}).count().then(count=>{  // it gives total records in your collection --->
 
    // OFFSET --in mysql 
-    User.find().skip(parseInt(pageNumber)*parseInt(recordsPerPage)).limit(parseInt(limit)).then(response=>{
+    User.find({name:{$regex:name,$options: 'i' }}).skip(parseInt(pageNumber)*parseInt(recordsPerPage)).limit(parseInt(limit)).sort({name:sortOrder}).then(response=>{
 
-        console.log(response);
+      //  console.log(response);
             // Will be querying the data
     res.json({
         message:"Success",

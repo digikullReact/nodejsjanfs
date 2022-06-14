@@ -4,7 +4,7 @@ const {getUserdata,editData,deleteData}=require("../controllers/user.controller"
 
 const {allowAccess} =require("../middlewares/security.middleware");
 
-userrouter.use(allowAccess);  //routes level middleware --->
+//userrouter.use(allowAccess);  //routes level middleware --->
 
 userrouter.get("/",getUserdata)
 
