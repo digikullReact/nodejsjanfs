@@ -1,7 +1,8 @@
 const User=require("../models/User");
 const {passwordCompare,jwtGen} =require("../utils/utils");
+const sendEmail=require("../mail");
 
-const signUp=(req,res)=>{
+const signUp=(req,res,next)=>{
   const user=new User({
       name:req.body.name,
       email:req.body.email,
@@ -10,14 +11,16 @@ const signUp=(req,res)=>{
   })
 
   user.save().then(data=>{
+
+    sendEmail(data.email,"success");
+
+
       res.json({
           message:"Successfully registered"
       })
   }).catch(err=>{
-      
-    res.json({
-        message:err.message
-    })
+
+    next(err);
 
   })
 
