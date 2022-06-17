@@ -13,8 +13,8 @@ const Home = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalVisible2, setIsModalVisible2] = useState(false);
   const [pageNumber,setpageNumber]=useState(0);
-  const [limit,setLimit]=useState(2);
-  const [recordsPerPage,setrecordsPerPage]=useState(2)
+  const [limit,setLimit]=useState(20);
+  const [recordsPerPage,setrecordsPerPage]=useState(20)
   const [totalcount,setTotalcount]=useState(0);
   const [searchQuery,setSearchQuery]=useState("");
   const [sortOrder,setSortOrder]=useState(1);
@@ -120,6 +120,16 @@ const Home = () => {
       dataIndex: 'email',
       key: 'age',
     },
+
+    {
+      title: 'Profile Picture',
+    
+      key: 'profilePicture',
+
+      render: (row, record) => (
+       <img width="50px" height="50px" src={record.profilePicture} />
+      ),
+    },
   
   
     {
@@ -210,7 +220,7 @@ const handleSearchChange=(event)=>{
     showSorterTooltip={true}	
     
     
-    pagination={{ defaultPageSize: 2,  total:totalcount  ,showSizeChanger: true, pageSizeOptions: ['10', '20', '30']} }/>
+    pagination={{ defaultPageSize: limit,  total:totalcount  ,showSizeChanger: true, pageSizeOptions: ['10', '20', '30']} }/>
     </Col>
   </Row>
 

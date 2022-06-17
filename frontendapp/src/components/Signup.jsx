@@ -8,10 +8,28 @@ import config from './config';
 
 const Signup = () => {
   const [success,setSuccess]=useState("");
+  const [file,setFile]=useState("");
 
   const onFinish = (values) => {
+    console.log(values);
+    
+    const formData = new FormData();
+    formData.append("name",values.name);
 
-    axios.post(`${config.URL}auth/signup`,values).then(result=>{
+    formData.append("email",values.email);
+    formData.append("password",values.password);
+    formData.append("file",file)
+
+    const configAxios = {
+      headers: {
+          'content-type': 'multipart/form-data',
+     
+      }
+  }
+
+
+
+    axios.post(`${config.LOCALURL}auth/signup`,formData,configAxios).then(result=>{
 
  
     if(result.data.message=="Successfully registered")
@@ -34,6 +52,12 @@ const Signup = () => {
     console.log('Failed:', errorInfo);
   };
 
+const onFileChange=(event)=>{
+ // console.log(event.target.files)
+  setFile(event.target.files[0])
+
+}
+
   return (
 
     <Row style={{marginTop:"120px"}}>
@@ -50,7 +74,11 @@ const Signup = () => {
       }
     <h1>Signup Here</h1>
 
+
+    <input type="file"  onChange={onFileChange}/>
+
     <Form
+    style={{marginTop:20}}
     name="basic"
     labelCol={{ span: 8 }}
     wrapperCol={{ span: 16 }}
@@ -82,6 +110,8 @@ const Signup = () => {
     >
       <Input.Password />
     </Form.Item>
+
+    
 
 
     <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

@@ -12,7 +12,7 @@ const sendEmail=(email,message)=>{
         html: "<p>HTML version of the message</p>"
       };
    const transporter= nodemailer.createTransport({
-        host: "smtp.mandrillapp.com",
+        host: "smtp.mandrillapp.com",  // host of your smtp provider
         port: 587,
         secure: false, // upgrade later with STARTTLS
         tls: {
