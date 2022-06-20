@@ -10,6 +10,7 @@ import {
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Home from './components/Home';
+import Socket from './components/Socket';
 
 function App() {
 
@@ -23,6 +24,8 @@ function App() {
       <Route path="/signup" element={<Signup />}/>
 
       <Route path="/home" element={<Home />}/>
+
+      <Route path="/socket" element={<Socket />}/>
       
     </Routes>
 
